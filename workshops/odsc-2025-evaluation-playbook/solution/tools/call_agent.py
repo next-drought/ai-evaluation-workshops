@@ -1,6 +1,7 @@
 import asyncio
-import click
 from functools import wraps
+
+import click
 
 from evaluation_playbook.workflow import agent
 

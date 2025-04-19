@@ -1,12 +1,10 @@
-from loguru import logger
-
 from langchain_qdrant import QdrantVectorStore, RetrievalMode
+from loguru import logger
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, VectorParams
 
-
-from evaluation_playbook.rag.embeddings import get_embedding_model
 from evaluation_playbook.config import settings
+from evaluation_playbook.rag.embeddings import get_embedding_model
 
 
 class QdrantClientWrapper:

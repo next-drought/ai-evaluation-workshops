@@ -2,9 +2,9 @@ from pathlib import Path
 
 import click
 
-from evaluation_playbook.rag.long_term_memory import LongTermMemoryCreator
 from evaluation_playbook.config import settings
 from evaluation_playbook.domain.philosopher import PhilosopherExtract
+from evaluation_playbook.rag.long_term_memory import LongTermMemoryCreator
 
 
 @click.command()
@@ -20,7 +20,7 @@ def main(metadata_file: Path) -> None:
     Args:
         metadata_file: Path to the philosophers extraction metadata JSON file.
     """
-    
+
     philosophers = PhilosopherExtract.from_json(metadata_file)
 
     long_term_memory_creator = LongTermMemoryCreator.build_from_settings()

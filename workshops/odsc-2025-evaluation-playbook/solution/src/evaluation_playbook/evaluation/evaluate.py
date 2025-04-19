@@ -11,11 +11,11 @@ from opik.evaluation.metrics import (
     Moderation,
 )
 
+from evaluation_playbook.config import settings
+from evaluation_playbook.domain.philosopher_factory import PhilosopherFactory
 from evaluation_playbook.opik_utils import get_dataset
 from evaluation_playbook.workflow import agent
 from evaluation_playbook.workflow.state import state_to_str
-from evaluation_playbook.config import settings
-from evaluation_playbook.domain.philosopher_factory import PhilosopherFactory
 
 
 async def evaluation_task(x: dict) -> dict:

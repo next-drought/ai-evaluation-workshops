@@ -1,10 +1,8 @@
-from pathlib import Path
 
 import click
 from loguru import logger
 
 from evaluation_playbook.evaluation import evaluate_agent
-from evaluation_playbook.config import settings
 
 
 @click.command()

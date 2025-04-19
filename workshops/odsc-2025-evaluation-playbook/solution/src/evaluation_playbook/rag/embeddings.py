@@ -3,7 +3,6 @@ from langchain_openai import OpenAIEmbeddings
 
 from evaluation_playbook.config import settings
 
-
 EmbeddingsModel = HuggingFaceEmbeddings | OpenAIEmbeddings
 
 
@@ -67,7 +66,7 @@ def get_huggingface_embedding_model(
         The model is configured with trust_remote_code=True and normalize_embeddings=False
         for compatibility with most embedding models.
     """
-    
+
     return HuggingFaceEmbeddings(
         model_name=model_id,
         model_kwargs={"device": device, "trust_remote_code": True},

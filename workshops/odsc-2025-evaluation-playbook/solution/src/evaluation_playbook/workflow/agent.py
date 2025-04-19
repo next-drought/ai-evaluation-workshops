@@ -1,9 +1,9 @@
-from typing import Any, AsyncGenerator
 import uuid
+from typing import Any, AsyncGenerator
+
+from langchain_core.messages import AIMessage, AIMessageChunk, HumanMessage
 from loguru import logger
 from opik.integrations.langchain import OpikTracer
-
-from langchain_core.messages import AIMessage, HumanMessage, AIMessageChunk
 
 from evaluation_playbook.domain.philosopher_factory import PhilosopherFactory
 from evaluation_playbook.workflow.graph import create_workflow_graph

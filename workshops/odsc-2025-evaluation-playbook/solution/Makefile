@@ -15,44 +15,44 @@ EVALUATION_DATASET_NAME = "odsc-2025-evaluation-playbook-slim-dataset"
 
 # --- Utilities ---
 
-help:
+help: # Display this help message with available commands
 	@grep -E '^[a-zA-Z0-9 -]+:.*#'  Makefile | sort | while read -r l; do printf "\033[1;32m$$(echo $$l | cut -f 1 -d':')\033[00m:$$(echo $$l | cut -f 2- -d'#')\n"; done
 
 # --- Infrastructure --- 
 
-local-infrastructure-up:
+local-infrastructure-up: # Start local infrastructure services using Docker Compose
 	docker compose -f docker-compose.yml up -d
 
-local-infrastructure-down:
+local-infrastructure-down: # Stop and remove local infrastructure services
 	docker compose -f docker-compose.yml down
 
 # --- Run ---
 
-create-long-term-memory:
+create-long-term-memory: # Initialize the long-term memory for the agent
 	uv run python -m tools.create_long_term_memory
 
-call-agent:
+call-agent: # Query the philosophical agent with a specific question
 	TOKENIZERS_PARALLELISM=true uv run python -m tools.call_agent --philosopher-id $(PHILOSOPHER_ID) --query $(QUERY)
 
-upload-evaluation-dataset:
+upload-evaluation-dataset: # Upload a dataset for agent evaluation
 	uv run python -m tools.upload_evaluation_dataset --dataset-name $(EVALUATION_DATASET_NAME)
 
-evaluate-agent:
+evaluate-agent: # Run evaluation tests on the agent using the specified dataset
 	uv run python -m tools.evaluate_agent --dataset-name $(EVALUATION_DATASET_NAME) --workers 2 --nb-samples 2
 
 # --- QA ---
 
-format-fix:
+format-fix: # Fix code formatting issues using ruff
 	uv run ruff format $(CHECK_DIRS)
 	uv run ruff check --select I --fix  $(CHECK_DIRS)
 
-lint-fix:
+lint-fix: # Fix linting issues using ruff
 	uv run ruff check --fix $(CHECK_DIRS)
 
-format-check:
+format-check: # Check code formatting without making changes
 	uv run ruff format --check $(CHECK_DIRS) 
 	uv run ruff check -e $(CHECK_DIRS)
 	uv run ruff check --select I -e $(CHECK_DIRS)
 
-lint-check:
+lint-check: # Check code for linting issues without making changes
 	uv run ruff check $(CHECK_DIRS)

@@ -1,7 +1,7 @@
 from langchain.tools.retriever import create_retriever_tool
 
-from evaluation_playbook.rag.retrievers import get_retriever
 from evaluation_playbook.config import settings
+from evaluation_playbook.rag.retrievers import get_retriever
 
 retriever = get_retriever(
     embedding_model_id=settings.RAG_TEXT_EMBEDDING_MODEL_ID,

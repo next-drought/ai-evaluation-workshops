@@ -3,8 +3,8 @@ from pathlib import Path
 import click
 from loguru import logger
 
-from evaluation_playbook.evaluation import upload_dataset
 from evaluation_playbook.config import settings
+from evaluation_playbook.evaluation import upload_dataset
 
 
 @click.command()

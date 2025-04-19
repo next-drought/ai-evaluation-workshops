@@ -1,6 +1,7 @@
-from evaluation_playbook.qdrant_wrapper import QdrantClientWrapper
-from loguru import logger
 from langchain_core.vectorstores import VectorStoreRetriever
+from loguru import logger
+
+from evaluation_playbook.qdrant_wrapper import QdrantClientWrapper
 
 
 def get_retriever(

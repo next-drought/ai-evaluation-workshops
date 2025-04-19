@@ -1,13 +1,12 @@
+from langchain_qdrant import QdrantVectorStore
 from loguru import logger
 
-from langchain_qdrant import QdrantVectorStore
-
+from evaluation_playbook.config import settings
+from evaluation_playbook.domain.philosopher import PhilosopherExtract
 from evaluation_playbook.qdrant_wrapper import QdrantClientWrapper
 from evaluation_playbook.rag.deduplicate_documents import deduplicate_documents
 from evaluation_playbook.rag.extract import get_extraction_generator
 from evaluation_playbook.rag.splitters import Splitter, get_splitter
-from evaluation_playbook.config import settings
-from evaluation_playbook.domain.philosopher import PhilosopherExtract
 
 
 class LongTermMemoryCreator:
@@ -66,7 +65,7 @@ class LongTermMemoryCreator:
         Args:
             philosophers (list[PhilosopherExtract]): List of philosopher extracts to process.
         """
-        
+
         if len(philosophers) == 0:
             logger.warning("No philosophers to extract. Exiting.")
 

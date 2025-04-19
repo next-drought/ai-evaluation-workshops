@@ -1,14 +1,12 @@
-from langchain_core.runnables import RunnableConfig
-from langgraph.prebuilt import ToolNode
-
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.runnables import RunnableConfig
 from langchain_openai import ChatOpenAI
-
-from evaluation_playbook.workflow.state import PhilosopherState
-from evaluation_playbook.workflow.tools import tools
+from langgraph.prebuilt import ToolNode
 
 from evaluation_playbook.config import settings
 from evaluation_playbook.domain.prompts import PHILOSOPHER_CHARACTER_CARD
+from evaluation_playbook.workflow.state import PhilosopherState
+from evaluation_playbook.workflow.tools import tools
 
 
 def get_philosopher_response_chain():

@@ -38,7 +38,7 @@ def upload_dataset(
         ...     philosopher_ids={"plato", "aristotle"}
         ... )
     """
-    
+
     assert data_path.exists(), f"File {data_path} does not exist."
 
     with open(data_path, "r") as f:
