@@ -42,7 +42,7 @@ We will be using Unix commands across the course, so if you are using Windows, y
 Also, the course requires access to these cloud services. The authentication to these services is done by adding the corresponding environment variables to the `.env` file:
 
 | Service | Purpose | Cost | Environment Variable | Setup Guide |
-|---------|---------|------|---------------------|-------------| ---------------------|
+|---------|---------|------|---------------------|-------------|
 | [Opik](https://rebrand.ly/philoagents-opik) | LLMOps | Free tier (Hosted on Comet - same API Key) | `COMET_API_KEY` | [Quick Start Guide](https://rebrand.ly/philoagents-opik-quickstart) |
 | [OpenAI API](https://openai.com/index/openai-api/) | LLM API used for evaluation | Pay-per-use | `OPENAI_API_KEY` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) |
 
