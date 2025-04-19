@@ -12,6 +12,15 @@ from evaluation_playbook.domain.prompts import PHILOSOPHER_CHARACTER_CARD
 
 
 def get_philosopher_response_chain():
+    """Get the philosopher response chain.
+
+    This function creates a chain of tools and a prompt for the philosopher response.
+    It uses the OpenAI API to generate responses based on the philosopher's character card.
+
+    Returns:
+        Runnable: A chain of tools and a prompt for the philosopher response.
+    """
+
     assert settings.OPENAI_API_KEY is not None, "OPENAI_API_KEY is not set"
 
     model = ChatOpenAI(
@@ -36,6 +45,19 @@ retriever_node = ToolNode(tools)
 
 
 async def conversation_node(state: PhilosopherState, config: RunnableConfig):
+    """Conversation node for the philosopher workflow.
+
+    This function processes the conversation state and invokes the philosopher response chain.
+    It uses the OpenAI API to generate responses based on the philosopher's character card.
+
+    Args:
+        state: The current state of the conversation.
+        config: The configuration for the conversation.
+
+    Returns:
+        dict: The updated state with the generated messages.
+    """
+
     conversation_chain = get_philosopher_response_chain()
 
     response = await conversation_chain.ainvoke(

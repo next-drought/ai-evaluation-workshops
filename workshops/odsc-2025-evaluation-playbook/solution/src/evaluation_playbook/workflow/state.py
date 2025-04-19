@@ -10,7 +10,6 @@ class PhilosopherState(MessagesState):
         philosopher_name (str): The name of the philosopher.
         philosopher_perspective (str): The perspective of the philosopher about AI.
         philosopher_style (str): The style of the philosopher.
-        summary (str): A summary of the conversation. This is used to reduce the token usage of the model.
     """
 
     philosopher_context: str

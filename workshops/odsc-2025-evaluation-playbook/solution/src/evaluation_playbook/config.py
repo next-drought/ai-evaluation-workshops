@@ -5,6 +5,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    """Configuration settings for the evaluation playbook application.
+
+    This class uses Pydantic's BaseSettings to manage configuration through environment
+    variables and .env files. It includes settings for OpenAI, Qdrant vector store,
+    Opik monitoring, RAG system, and file paths.
+    """
+
     model_config = SettingsConfigDict(
         env_file=".env", extra="ignore", env_file_encoding="utf-8"
     )

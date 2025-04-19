@@ -10,7 +10,26 @@ from evaluation_playbook.config import settings
 
 
 class QdrantClientWrapper:
+    """Wrapper class for managing Qdrant vector store operations.
+
+    This class provides a simplified interface for working with Qdrant vector store,
+    including collection management and vector store operations using LangChain integration.
+
+    Attributes:
+        client (QdrantClient): The underlying Qdrant client instance.
+        vector_store (QdrantVectorStore): LangChain vector store interface for Qdrant.
+    """
+
     def __init__(self) -> None:
+        """Initialize the Qdrant client wrapper.
+
+        Creates a connection to the Qdrant server and initializes the collection
+        if it doesn't exist. Sets up the vector store with the specified embedding model.
+
+        Raises:
+            Exception: If there are issues connecting to Qdrant or creating the collection.
+        """
+
         try:
             self.client = QdrantClient(url=settings.QDRANT_URL)
         except Exception as e:
@@ -40,6 +59,15 @@ class QdrantClientWrapper:
         )
 
     def create_collection(self) -> None:
+        """Create a new Qdrant collection with the configured parameters.
+
+        Creates a collection using the configured name and vector parameters from settings.
+        The collection uses cosine distance for similarity calculations.
+
+        Raises:
+            Exception: If there are issues creating the collection.
+        """
+
         self.client.create_collection(
             collection_name=settings.QDRANT_COLLECTION_NAME,
             vectors_config=VectorParams(
@@ -49,6 +77,12 @@ class QdrantClientWrapper:
         logger.info(f"Qdrant collection {settings.QDRANT_COLLECTION_NAME} created.")
 
     def clear_collection(self) -> None:
+        """Clear all data from the Qdrant collection.
+
+        Deletes the existing collection and creates a new empty one with the same parameters.
+        This is useful for resetting the vector store state.
+        """
+
         self.client.delete_collection(collection_name=settings.QDRANT_COLLECTION_NAME)
         self.create_collection()
         logger.info(f"Qdrant collection {settings.QDRANT_COLLECTION_NAME} cleared.")

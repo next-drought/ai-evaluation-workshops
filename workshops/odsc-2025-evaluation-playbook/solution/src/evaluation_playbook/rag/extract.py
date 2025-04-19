@@ -90,15 +90,35 @@ def extract_stanford_encyclopedia_of_philosophy(
 ) -> list[Document]:
     """Extract documents for a single philosopher from Stanford Encyclopedia of Philosophy.
 
+    This function scrapes content from Stanford Encyclopedia of Philosophy URLs,
+    processes the content by removing irrelevant sections, and creates documents
+    with metadata about the philosopher.
+
     Args:
-        philosopher: Philosopher object containing philosopher information.
-        urls: List of URLs to extract content from.
+        philosopher (Philosopher): Philosopher object containing identification and
+            biographical information.
+        urls (list[str]): List of Stanford Encyclopedia URLs to extract content from.
+            These should be valid URLs pointing to philosopher entries.
 
     Returns:
-        list[Document]: List of documents extracted from Stanford Encyclopedia for the philosopher.
+        list[Document]: List of processed documents, each containing cleaned text content
+            and metadata including source URL, philosopher ID, name, and article title.
     """
 
     def extract_paragraphs_and_headers(soup) -> str:
+        """Extract relevant content from a BeautifulSoup object of a Stanford Encyclopedia page.
+
+        This function processes a BeautifulSoup object by:
+        1. Removing irrelevant sections (bibliography, tools, etc.)
+        2. Extracting text from paragraphs and headers
+        3. Joining the extracted content with newlines
+
+        Args:
+            soup: BeautifulSoup object of a Stanford Encyclopedia page.
+
+        Returns:
+            str: Cleaned and joined text content from the page.
+        """
         # List of class/id names specific to the Stanford Encyclopedia of Philosophy that we want to exclude.
         excluded_sections = [
             "bibliography",

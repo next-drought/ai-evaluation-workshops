@@ -18,14 +18,16 @@ async def call(
     """Run a conversation through the workflow graph.
 
     Args:
-        message: Initial message to start the conversation.
-        philosopher_id: Unique identifier for the philosopher.
-        new_thread: Whether to create a new thread.
+        messages (Union[str, List[str], List[Dict[str, Any]]]): Messages to start the conversation.
+            Can be a single string, list of strings, or list of message dictionaries.
+        philosopher_id (str): Unique identifier for the philosopher to converse with.
+        new_thread (bool, optional): Whether to create a new conversation thread.
+            Defaults to False.
 
     Returns:
-        tuple[str, PhilosopherState]: A tuple containing:
-            - The content of the last message in the conversation.
-            - The final state after running the workflow.
+        Tuple[str, PhilosopherState]: A tuple containing:
+            - str: The content of the last message in the conversation.
+            - PhilosopherState: The final state after running the workflow.
 
     Raises:
         RuntimeError: If there's an error running the conversation workflow.
@@ -70,17 +72,17 @@ async def stream(
     philosopher_id: str,
     new_thread: bool = False,
 ) -> AsyncGenerator[str, None]:
-    """Run a conversation through the workflow graph.
+    """Run a conversation through the workflow graph and stream responses.
 
     Args:
-        message: Initial message to start the conversation.
-        philosopher_id: Unique identifier for the philosopher.
-        new_thread: Whether to create a new thread.
+        messages (Union[str, List[str], List[Dict[str, Any]]]): Messages to start the conversation.
+            Can be a single string, list of strings, or list of message dictionaries.
+        philosopher_id (str): Unique identifier for the philosopher to converse with.
+        new_thread (bool, optional): Whether to create a new conversation thread.
+            Defaults to False.
 
-    Returns:
-        tuple[str, PhilosopherState]: A tuple containing:
-            - The content of the last message in the conversation.
-            - The final state after running the workflow.
+    Yields:
+        str: Content chunks from the AI responses as they are generated.
 
     Raises:
         RuntimeError: If there's an error running the conversation workflow.
@@ -123,6 +125,19 @@ async def stream(
 
 
 def render_graph(file_name: str = "workflow_graph.png") -> None:
+    """Render the workflow graph to a PNG file.
+
+    Compiles the workflow graph and saves a visual representation in Mermaid format
+    to a PNG file.
+
+    Args:
+        file_name (str, optional): Output file path for the rendered graph.
+            Defaults to "workflow_graph.png".
+
+    Note:
+        The graph is rendered with XRay mode enabled to show additional details.
+    """
+
     graph_builder = create_workflow_graph()
     graph = graph_builder.compile()
 

@@ -8,6 +8,15 @@ from evaluation_playbook.config import settings
 
 
 def configure() -> None:
+    """Configure Opik monitoring with API key and project settings.
+
+    This function sets up Opik monitoring using the configured API key and project name.
+    If the configuration fails or required settings are missing, warning messages are logged.
+
+    Raises:
+        Exception: If there are issues with the Opik server connection or configuration.
+    """
+
     if settings.OPIK_API_KEY and settings.OPIK_PROJECT:
         try:
             client = OpikConfigurator(api_key=settings.OPIK_API_KEY.get_secret_value())
@@ -41,6 +50,14 @@ def configure() -> None:
 
 
 def get_dataset(name: str) -> opik.Dataset | None:
+    """Retrieve an Opik dataset by name.
+
+    Args:
+        name (str): The name of the dataset to retrieve.
+
+    Returns:
+        opik.Dataset | None: The requested dataset if found, None otherwise.
+    """
     client = opik.Opik()
     try:
         dataset = client.get_dataset(name=name)
@@ -51,6 +68,19 @@ def get_dataset(name: str) -> opik.Dataset | None:
 
 
 def create_dataset(name: str, description: str, items: list[dict]) -> opik.Dataset:
+    """Create a new Opik dataset with the given items.
+
+    If a dataset with the same name exists, it will be deleted before creating
+    the new one.
+
+    Args:
+        name (str): Name for the new dataset.
+        description (str): Description of the dataset.
+        items (list[dict]): List of items to insert into the dataset.
+
+    Returns:
+        opik.Dataset: The newly created and populated dataset.
+    """
     client = opik.Opik()
 
     client.delete_dataset(name=name)
