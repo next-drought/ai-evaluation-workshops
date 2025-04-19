@@ -12,8 +12,9 @@ This guide will help you set up and run the webinar.
 - [🎯 Getting Started](#-getting-started)
 - [📁 Project Structure](#-project-structure)
 - [🏗️ Set Up Your Local Infrastructure](#-set-up-your-local-infrastructure)
-- [⚡️ Running the Code for Each Module](#️-running-the-code-for-each-module)
-- [🔧 Utlity Commands](#-utility-commands)
+- [⚡️ Running the Code](#️-running-the-code)
+- [👀 Qdrant Visualizations](#-qdrant-visualizations)
+- [📚 Resources](#-resources)
 
 # 📋 Prerequisites
 
@@ -119,18 +120,66 @@ From the root `odsc-2025-evaluation-playbook/template` directory, to stop the Do
 make local-infrastructure-down
 ```
 
-## Resources
+# ⚡️ Running the Code
 
-Continue your learning journey with our [**PhiloAgents Course**](https://github.com/neural-maze/philoagents-course).
+The project provides several make commands to interact with the philosophical agent and run evaluations:
 
-Other useful resources:
-- [Opik Documentation](https://www.comet.com/docs/opik/)
-- [🚀 LangGraph Quickstart](https://langchain-ai.github.io/langgraph/tutorials/introduction/)
-- [Qdrant Installation](https://qdrant.tech/documentation/guides/installation/)
-- [Qdrant Quickstart](https://qdrant.tech/documentation/quickstart/)
-- [Qdrant LangChain](https://python.langchain.com/docs/integrations/vectorstores/qdrant/)
+## 1. Initialize Long-Term Memory
 
-## Qdrant Visualizations
+Before using the agent, you need to initialize its long-term memory:
+
+```bash
+make create-long-term-memory
+```
+
+## 2. Query the Agent
+
+You can interact with the philosophical agent using the `call-agent` command. By default, it uses Plato as the philosopher and asks about his birth:
+
+```bash
+make call-agent
+```
+
+You can customize the philosopher and query using variables:
+
+```bash
+make call-agent PHILOSOPHER_ID="aristotle" QUERY="What is your view on ethics?"
+```
+
+## 3. Run Evaluations
+
+To evaluate the agent's performance, first upload an evaluation dataset:
+
+```bash
+make upload-evaluation-dataset
+```
+
+You can specify a custom dataset name:
+```bash
+make upload-evaluation-dataset EVALUATION_DATASET_NAME="my-custom-dataset"
+```
+
+Then run the evaluation:
+
+```bash
+make evaluate-agent
+```
+
+The evaluation runs with 2 workers and 2 samples by default. You can customize the dataset:
+
+```bash
+make evaluate-agent EVALUATION_DATASET_NAME="my-custom-dataset"
+```
+
+## 4. Help
+
+For help on all the supported commands, run:
+
+```bash
+make help
+```
+
+# 👀 Qdrant Visualizations
 
 Type in your browser `localhost:6333/dashboard` to access [Qdrant's Dashboard](localhost:6333/dashboard).
 
@@ -146,8 +195,6 @@ Visualize:
 }
 ```
 
-
-
 Graph
 ```
 {
@@ -159,3 +206,16 @@ Graph
     }
 }
 ```
+
+# 📚 Resources
+
+Continue your learning journey with our [**PhiloAgents Course**](https://github.com/neural-maze/philoagents-course).
+
+Other useful resources:
+- [Opik Documentation](https://www.comet.com/docs/opik/)
+- [🚀 LangGraph Quickstart](https://langchain-ai.github.io/langgraph/tutorials/introduction/)
+- [Qdrant Installation](https://qdrant.tech/documentation/guides/installation/)
+- [Qdrant Quickstart](https://qdrant.tech/documentation/quickstart/)
+- [Qdrant LangChain](https://python.langchain.com/docs/integrations/vectorstores/qdrant/)
+
+
