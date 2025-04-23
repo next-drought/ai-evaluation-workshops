@@ -162,7 +162,7 @@ make local-infrastructure-down
 
 # ⚡️ Running the Code
 
-To show case our ideas related to evaluation and observability we will use a simple RAG agent implemented in LangGraph, as seen in the image below:
+To showcase our ideas related to evaluation and observability, we will use a simple RAG agent implemented in LangGraph, as seen in the image below:
 
 ![Agent](./static/workflow_graph.png)
 
