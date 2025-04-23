@@ -217,9 +217,9 @@ You can customize the philosopher and query using variables:
 make call-agent PHILOSOPHER_ID="aristotle" QUERY="What is your view on ethics?"
 ```
 
-Visualize the prompt traces in [Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+Visualize the **prompt traces** in [Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
 
-Visualize the versioned prompts in [Opik's dashboard -> Prompt library](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+Visualize the **versioned prompts** in [Opik's dashboard -> Prompt library](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
 
 ## 3. Run Evaluations
 
@@ -229,7 +229,7 @@ To evaluate the agent's performance, first upload an evaluation dataset:
 make upload-evaluation-dataset
 ```
 
-Visualize the evaluation dataset in [Opik's dashboard -> Datasets -> odsc-2025-evaluation-playbook-slim-dataset](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+Visualize the **evaluation dataset** in [Opik's dashboard -> Datasets -> odsc-2025-evaluation-playbook-slim-dataset](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
 
 Then run the evaluation:
 
@@ -237,7 +237,7 @@ Then run the evaluation:
 make evaluate-agent
 ```
 
-Visualize the evaluation results in [Opik's dashboard -> Experiments](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course)
+Visualize the **evaluation results** in [Opik's dashboard -> Experiments](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course)
 
 ## 4. Help
 
