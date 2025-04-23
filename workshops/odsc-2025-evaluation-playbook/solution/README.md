@@ -156,7 +156,7 @@ make local-infrastructure-down
 </table>
 
 <p align="center">
-  [Subscribe to Decoding ML](https://decodingml.substack.com/)
+  <a href="https://decodingml.substack.com/">Subscribe to Decoding ML</a>
 </p>
 
 # ⚡️ Running the Code
