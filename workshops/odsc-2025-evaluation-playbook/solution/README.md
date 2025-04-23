@@ -6,7 +6,7 @@
 
 <div align="center">
     <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">
-        <img src="../workshop_card.png" width="600" alt="Workshop Card" />
+        <img src="../workshop_card.png" width="500" alt="Workshop Card" />
     </a>
 </div>
 

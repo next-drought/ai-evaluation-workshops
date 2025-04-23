@@ -4,7 +4,11 @@
   <p class="tagline"> <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">ODSC 2025 Webinar by Paul Iusztin</a> - Click to learn more about the webinar and speaker</p>
 </div>
 
-[![Workshop Card](./workshop_card.png)](https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/)
+<div align="center">
+    <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">
+        <img src="./workshop_card.png" width="500" alt="Workshop Card" />
+    </a>
+</div>
 
 This guide will help you set up and run the webinar, where we will explore the following topics:
 
