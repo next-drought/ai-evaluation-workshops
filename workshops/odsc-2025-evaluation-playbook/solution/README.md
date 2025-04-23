@@ -17,6 +17,7 @@ This guide will help you set up and run the webinar, where we will explore the f
 - Evaluate the context from the retrieval step used for RAG.
 - Compute application-level metrics to expose hallucinations, moderation issues, and performance (using LLM-as-judges).
 - Log the metrics to a prompt management tool to compare the experiments.
+- Version the prompts
 
 # 📑 Table of Contents
 
@@ -124,7 +125,7 @@ philoagents-api/
 
 # 🏗️ Set Up Your Local Infrastructure
 
-We use Docker to set up the local infrastructure (Game UI, Agent API, MongoDB).
+We use Docker to set up the local infrastructure, more exactly a Qdrant vector database.
 
 > [!WARNING]
 > Before running the command below, ensure you do not have any processes running on ports `6333` (Qdrant).
@@ -160,6 +161,10 @@ make local-infrastructure-down
 </p>
 
 # ⚡️ Running the Code
+
+To show case our ideas related to evaluation and observability we will use a simple RAG agent implemented in LangGraph, as seen in the image below:
+
+![Agent](./static/workflow_graph.png)
 
 The project provides several make commands to interact with the philosophical agent and run evaluations:
 

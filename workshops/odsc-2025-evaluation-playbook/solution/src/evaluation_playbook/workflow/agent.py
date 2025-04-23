@@ -36,7 +36,7 @@ async def call(
     philosopher_factory = PhilosopherFactory()
     philosopher = philosopher_factory.get_philosopher(philosopher_id)
 
-    graph_builder = create_workflow_graph()
+    graph_builder = create_workflow_graph(stream_usage=False)
 
     try:
         graph = graph_builder.compile()
@@ -91,7 +91,7 @@ async def stream(
     philosopher_factory = PhilosopherFactory()
     philosopher = philosopher_factory.get_philosopher(philosopher_id)
 
-    graph_builder = create_workflow_graph()
+    graph_builder = create_workflow_graph(stream_usage=True)
 
     try:
         graph = graph_builder.compile()
@@ -138,7 +138,7 @@ def render_graph(file_name: str = "workflow_graph.png") -> None:
         The graph is rendered with XRay mode enabled to show additional details.
     """
 
-    graph_builder = create_workflow_graph()
+    graph_builder = create_workflow_graph(stream_usage=False)
     graph = graph_builder.compile()
 
     mermaid_png = graph.get_graph(xray=True).draw_mermaid_png(max_retries=3)

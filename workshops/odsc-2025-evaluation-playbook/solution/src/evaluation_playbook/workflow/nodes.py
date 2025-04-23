@@ -9,11 +9,14 @@ from evaluation_playbook.workflow.state import PhilosopherState
 from evaluation_playbook.workflow.tools import tools
 
 
-def get_philosopher_response_chain():
+def get_philosopher_response_chain(stream_usage: bool = True):
     """Get the philosopher response chain.
 
     This function creates a chain of tools and a prompt for the philosopher response.
     It uses the OpenAI API to generate responses based on the philosopher's character card.
+
+    Args:
+        stream_usage: Whether to stream the usage of the OpenAI API.
 
     Returns:
         Runnable: A chain of tools and a prompt for the philosopher response.
@@ -25,6 +28,7 @@ def get_philosopher_response_chain():
         api_key=settings.OPENAI_API_KEY,
         model=settings.OPENAI_MODEL,
         temperature=0.7,
+        stream_usage=stream_usage,
     )
     model = model.bind_tools(tools)
 
@@ -42,7 +46,9 @@ def get_philosopher_response_chain():
 retriever_node = ToolNode(tools)
 
 
-async def conversation_node(state: PhilosopherState, config: RunnableConfig):
+async def conversation_node(
+    state: PhilosopherState, config: RunnableConfig, stream_usage: bool = True
+):
     """Conversation node for the philosopher workflow.
 
     This function processes the conversation state and invokes the philosopher response chain.
@@ -51,12 +57,12 @@ async def conversation_node(state: PhilosopherState, config: RunnableConfig):
     Args:
         state: The current state of the conversation.
         config: The configuration for the conversation.
-
+        stream_usage: Whether to stream the usage of the OpenAI API.
     Returns:
         dict: The updated state with the generated messages.
     """
 
-    conversation_chain = get_philosopher_response_chain()
+    conversation_chain = get_philosopher_response_chain(stream_usage=stream_usage)
 
     response = await conversation_chain.ainvoke(
         {
