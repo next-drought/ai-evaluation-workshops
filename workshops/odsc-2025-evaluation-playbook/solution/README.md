@@ -5,7 +5,9 @@
 </div>
 
 <div align="center">
-    <img src="../workshop_card.png" width="600" alt="Workshop Card" />
+    <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">
+        <img src="../workshop_card.png" width="600" alt="Workshop Card" />
+    </a>
 </div>
 
 This guide will help you set up and run the webinar, where we will explore the following topics:
