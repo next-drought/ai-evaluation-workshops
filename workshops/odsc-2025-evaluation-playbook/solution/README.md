@@ -4,6 +4,8 @@
   <p class="tagline"> <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">ODSC 2025 Webinar by Paul Iusztin</a> - Click to learn more about the webinar and speaker</p>
 </div>
 
+[![Workshop Card](../workshop_card.png)](https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/)
+
 This guide will help you set up and run the webinar, where we will explore the following topics:
 
 - Add a prompt monitoring layer.
@@ -150,9 +152,7 @@ make local-infrastructure-down
 </table>
 
 <p align="center">
-  <a href="https://decodingml.substack.com/">
-    <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
-  </a>
+  [Subscribe to Decoding ML](https://decodingml.substack.com/)
 </p>
 
 # ⚡️ Running the Code
