@@ -1,10 +1,16 @@
 <div align="center">
   <h1>LLM & RAG Evaluation Playbook</h1>
-  <h3>A comprehensive guide for evaluating LLMs and RAG systems in production applications</h3>
+  <h3>A comprehensive guide for evaluating LLMs, RAG and agentic systems in production applications</h3>
   <p class="tagline"> <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">ODSC 2025 Webinar by Paul Iusztin</a> - Click to learn more about the webinar and speaker</p>
 </div>
 
-This guide will help you set up and run the webinar.
+This guide will help you set up and run the webinar, where we will explore the following topics:
+
+- Add a prompt monitoring layer.
+- Visualize the quality of the embeddings.
+- Evaluate the context from the retrieval step used for RAG.
+- Compute application-level metrics to expose hallucinations, moderation issues, and performance (using LLM-as-judges).
+- Log the metrics to a prompt management tool to compare the experiments.
 
 # 📑 Table of Contents
 
@@ -13,8 +19,7 @@ This guide will help you set up and run the webinar.
 - [📁 Project Structure](#-project-structure)
 - [🏗️ Set Up Your Local Infrastructure](#-set-up-your-local-infrastructure)
 - [⚡️ Running the Code](#️-running-the-code)
-- [👀 Qdrant Visualizations](#-qdrant-visualizations)
-- [📚 Resources](#-resources)
+- [📚 Continue Your Learning Journey](#-continue-your-learning-journey)
 
 # 📋 Prerequisites
 
@@ -59,7 +64,15 @@ cd workshops/odsc-2025-evaluation-playbook/template
 
 Next, we have to prepare your Python environment and its dependencies.
 
-## 2. Installation
+## 2. Choose Between the Solution or Template directory
+
+Within the `solution` directory, we have the end-to-end solution, which is helpful for testing the code and verifying the solution.
+
+We have the webinar code within the `template` directory, where you must implement parts of the code related to LLMOps and observability.
+
+So, change the directory to `solution` or `template` depending on your goal.
+
+## 3. Installation
 
 We will use `uv` to install the dependencies and activate the virtual environment:
 
@@ -78,7 +91,7 @@ This command will:
 - Activate the virtual environment
 - Install all dependencies from `pyproject.toml`
 
-## 3. Environment Configuration
+## 4. Environment Configuration
 
 Before running any command, inside the `philoagents-api` directory, you have to set up your environment:
 1. Create your environment file:
@@ -110,15 +123,37 @@ We use Docker to set up the local infrastructure (Game UI, Agent API, MongoDB).
 > [!WARNING]
 > Before running the command below, ensure you do not have any processes running on ports `6333` (Qdrant).
 
-From the root `odsc-2025-evaluation-playbook/template` directory, to start the Docker infrastructure, run:
+From the root `odsc-2025-evaluation-playbook/template` directory (or `solution`), to start the Docker infrastructure, run:
 ```bash
 make local-infrastructure-up
 ```
 
-From the root `odsc-2025-evaluation-playbook/template` directory, to stop the Docker infrastructure, run:
+From the root `odsc-2025-evaluation-playbook/template` directory (or `solution`), to stop the Docker infrastructure, run:
 ```bash
 make local-infrastructure-down
 ```
+
+<table style="border-collapse: collapse; border: none;">
+  <tr style="border: none;">
+    <td width="20%" style="border: none;">
+      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
+        <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
+      </a>
+    </td>
+    <td width="80%" style="border: none;">
+      <div>
+        <h2>📬 Stay Updated</h2>
+        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on production-grade AI systems. Every week, straight to your inbox.</p>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://decodingml.substack.com/">
+    <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
+  </a>
+</p>
 
 # ⚡️ Running the Code
 
@@ -132,54 +167,11 @@ Before using the agent, you need to initialize its long-term memory:
 make create-long-term-memory
 ```
 
-## 2. Query the Agent
+To check that everything worked fine, the easiest way is to check [Qdrant's Dashboard](localhost:6333/dashboard).
 
-You can interact with the philosophical agent using the `call-agent` command. By default, it uses Plato as the philosopher and asks about his birth:
+## 2. Visualize the Embeddings in Qdrant
 
-```bash
-make call-agent
-```
-
-You can customize the philosopher and query using variables:
-
-```bash
-make call-agent PHILOSOPHER_ID="aristotle" QUERY="What is your view on ethics?"
-```
-
-## 3. Run Evaluations
-
-To evaluate the agent's performance, first upload an evaluation dataset:
-
-```bash
-make upload-evaluation-dataset
-```
-
-You can specify a custom dataset name:
-```bash
-make upload-evaluation-dataset EVALUATION_DATASET_NAME="my-custom-dataset"
-```
-
-Then run the evaluation:
-
-```bash
-make evaluate-agent
-```
-
-The evaluation runs with 2 workers and 2 samples by default. You can customize the dataset:
-
-```bash
-make evaluate-agent EVALUATION_DATASET_NAME="my-custom-dataset"
-```
-
-## 4. Help
-
-For help on all the supported commands, run:
-
-```bash
-make help
-```
-
-# 👀 Qdrant Visualizations
+Now let's visualize the embeddings of the chunks ingested in the long term memory, more exactly in Qdrant.
 
 Type in your browser `localhost:6333/dashboard` to access [Qdrant's Dashboard](localhost:6333/dashboard).
 
@@ -207,11 +199,67 @@ Graph
 }
 ```
 
-# 📚 Resources
+## 3. Query the Agent
 
-Continue your learning journey with our [**PhiloAgents Course**](https://github.com/neural-maze/philoagents-course).
+You can interact with the philosophical agent using the `call-agent` command. By default, it uses Plato as the philosopher and asks about his life:
 
-Other useful resources:
+```bash
+make call-agent
+```
+
+You can customize the philosopher and query using variables:
+
+```bash
+make call-agent PHILOSOPHER_ID="aristotle" QUERY="What is your view on ethics?"
+```
+
+Visualize the prompt traces in [Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+
+Visualize the versioned prompts in [Opik's dashboard -> Prompt library](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+
+## 3. Run Evaluations
+
+To evaluate the agent's performance, first upload an evaluation dataset:
+
+```bash
+make upload-evaluation-dataset
+```
+
+Visualize the evaluation dataset in [Opik's dashboard -> Datasets -> odsc-2025-evaluation-playbook-slim-dataset](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+
+Then run the evaluation:
+
+```bash
+make evaluate-agent
+```
+
+Visualize the evaluation results in [Opik's dashboard -> Experiments](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course)
+
+## 4. Help
+
+For help on all the supported commands, run:
+
+```bash
+make help
+```
+
+# 📚 Continue Your Learning Journey
+
+If you enjoyed the workshop check out the open-source [**PhiloAgents Course**](https://github.com/neural-maze/philoagents-course), which the workshop it's inspired from.
+
+Within the course you can learn how to build an AI-powered game simulation engine to impersonate popular philosophere, and it's:
+- 100% free
+- 6 modules with video and written lessons
+- takes you from 0 to hero in implementing production-ready agents using LangGraph, Opik, Groq, FastAPI and more!
+- it's fun! you will learn to transform static NPCs into real philosophers you can talk to into a retro game
+
+The course is a collaboration between [Decoding ML](https://decodingml.substack.com/) and [The Neural Maze](https://theneuralmaze.substack.com/).
+
+📌 [Check it out on GitHub](https://github.com/neural-maze/philoagents-course)
+
+![PhiloAgents Course](./static/game_socrates_example.png)
+
+**Other useful resources:**
 - [Opik Documentation](https://www.comet.com/docs/opik/)
 - [🚀 LangGraph Quickstart](https://langchain-ai.github.io/langgraph/tutorials/introduction/)
 - [Qdrant Installation](https://qdrant.tech/documentation/guides/installation/)

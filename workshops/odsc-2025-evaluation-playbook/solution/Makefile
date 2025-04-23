@@ -9,7 +9,7 @@ include .env
 CHECK_DIRS := .
 
 PHILOSOPHER_ID = "plato"
-QUERY = "When and where were you born?"
+QUERY = "When and where were you born? Also tell me more about your life, work and beliefs."
 
 EVALUATION_DATASET_NAME = "odsc-2025-evaluation-playbook-slim-dataset"
 

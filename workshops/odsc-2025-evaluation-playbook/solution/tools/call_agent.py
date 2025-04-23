@@ -38,7 +38,10 @@ async def main(philosopher_id: str, query: str) -> None:
         query: Query to call the agent with.
     """
 
-    agent.render_graph()
+    try:
+        agent.render_graph()
+    except Exception:
+        print("\033[31mError rendering LangGraph graph image.\033[0m")
 
     print(
         f"\033[32mCalling agent with philosopher_id: `{philosopher_id}` and query: `{query}`\033[0m"

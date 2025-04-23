@@ -141,7 +141,7 @@ def render_graph(file_name: str = "workflow_graph.png") -> None:
     graph_builder = create_workflow_graph()
     graph = graph_builder.compile()
 
-    mermaid_png = graph.get_graph(xray=True).draw_mermaid_png()
+    mermaid_png = graph.get_graph(xray=True).draw_mermaid_png(max_retries=3)
     with open(file_name, "wb") as f:
         f.write(mermaid_png)
 
