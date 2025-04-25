@@ -19,6 +19,12 @@ This guide will help you set up and run the webinar, where we will explore the f
 - Log the metrics to a prompt management tool to compare the experiments.
 - Version the prompts
 
+<div align="center">
+    <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">
+        <img src="../where_can_we_evaluate_a _RAG_agent.png" width="500" alt="Workshop Card" />
+    </a>
+</div>
+
 # 📑 Table of Contents
 
 - [📋 Prerequisites](#-prerequisites)
@@ -184,23 +190,13 @@ Now let's visualize the embeddings of the chunks ingested in the long term memor
 
 Type in your browser `localhost:6333/dashboard` to access [Qdrant's Dashboard](localhost:6333/dashboard).
 
-Visualize:
+Then go to the `philosopher_long_term_memory` collection -> `Visualize` tab and run the default query.
+
+To add a filter on a specific philosopher (entity) you can run the following query inside the `Visualize` tab:
 ```
 {
   "limit": 500,
    "filter": {
-        "must": [
-            { "key": "metadata.philosopher_id", "match": { "value": "plato" } }
-        ]
-    }
-}
-```
-
-Graph
-```
-{
-  "sample": 400,
-  "filter": {
         "must": [
             { "key": "metadata.philosopher_id", "match": { "value": "plato" } }
         ]
@@ -242,7 +238,7 @@ Then run the evaluation:
 make evaluate-agent
 ```
 
-Visualize the **evaluation results** in [Opik's dashboard -> Experiments](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course)
+Visualize the **evaluation results (experiments)** in [Opik's dashboard -> Experiments](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course)
 
 ## 4. Help
 
