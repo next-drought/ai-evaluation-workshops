@@ -21,7 +21,7 @@ This guide will help you set up and run the webinar, where we will explore the f
 
 <div align="center">
     <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">
-        <img src="../where_can_we_evaluate_a _RAG_agent.png" width="500" alt="Workshop Card" />
+        <img src="../where_can_we_evaluate_a _RAG_agent.png" width="700" alt="Workshop Card" />
     </a>
 </div>
 
