@@ -32,6 +32,7 @@ This guide will help you set up and run the webinar, where we will explore the f
 - [📁 Project Structure](#-project-structure)
 - [🏗️ Set Up Your Local Infrastructure](#-set-up-your-local-infrastructure)
 - [⚡️ Running the Code](#️-running-the-code)
+- [🔗 Socials](#-socials)
 - [📚 Continue Your Learning Journey](#-continue-your-learning-journey)
 
 # 📋 Prerequisites
@@ -146,6 +147,8 @@ From the root `odsc-2025-evaluation-playbook/template` directory (or `solution`)
 make local-infrastructure-down
 ```
 
+----
+
 <table style="border-collapse: collapse; border: none;">
   <tr style="border: none;">
     <td width="20%" style="border: none;">
@@ -156,14 +159,16 @@ make local-infrastructure-down
     <td width="80%" style="border: none;">
       <div>
         <h2>📬 Stay Updated</h2>
-        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on production-grade AI systems. Every week, straight to your inbox.</p>
+        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
       </div>
     </td>
   </tr>
 </table>
 
 <p align="center">
-  <a href="https://decodingml.substack.com/">Subscribe to Decoding ML</a>
+  <a href="https://decodingml.substack.com/">
+    <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe%20Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
+  </a>
 </p>
 
 # ⚡️ Running the Code
@@ -193,7 +198,7 @@ Type in your browser `localhost:6333/dashboard` to access [Qdrant's Dashboard](l
 Then go to the `philosopher_long_term_memory` collection -> `Visualize` tab and run the default query.
 
 To add a filter on a specific philosopher (entity) you can run the following query inside the `Visualize` tab:
-```
+```json
 {
   "limit": 500,
    "filter": {
@@ -209,13 +214,13 @@ To add a filter on a specific philosopher (entity) you can run the following que
 You can interact with the philosophical agent using the `call-agent` command. By default, it uses Plato as the philosopher and asks about his life:
 
 ```bash
-make call-agent
+make call-agent PHILOSOPHER_ID="plato" QUERY="When and where were you born? Also tell me more about your life, work and beliefs."
 ```
 
 You can customize the philosopher and query using variables:
 
 ```bash
-make call-agent PHILOSOPHER_ID="aristotle" QUERY="What is your view on ethics?"
+make call-agent PHILOSOPHER_ID="turing" QUERY="What is your view on ethics when it comes to build intelligent machines? Also, tell me more about the Turing Test."
 ```
 
 Visualize the **prompt traces** in [Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
@@ -240,6 +245,8 @@ make evaluate-agent
 
 Visualize the **evaluation results (experiments)** in [Opik's dashboard -> Experiments](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course)
 
+📖 [Read more](https://www.comet.com/docs/opik/evaluation/metrics/overview?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course) on the evaluation metrics, such as how to interpret the numbers and how they are computed.
+
 ## 4. Help
 
 For help on all the supported commands, run:
@@ -248,7 +255,16 @@ For help on all the supported commands, run:
 make help
 ```
 
+# 🔗 Socials
+
+[![](https://img.shields.io/static/v1?label&logo=substack&message=Newsletter&style=for-the-badge&color=black)](https://decodingml.substack.com/)
+[![](https://img.shields.io/static/v1?label&logo=substack&message=Blog&style=for-the-badge&color=black)](https://decodingml.substack.com/)
+[![](https://img.shields.io/static/v1?label&logo=linkedin&message=linkedin&style=for-the-badge&color=black)](https://www.linkedin.com/in/pauliusztin/)
+[![](https://img.shields.io/static/v1?label&logo=x&message=Twitter&style=for-the-badge&color=black)](https://x.com/iusztinpaul)
+
 # 📚 Continue Your Learning Journey
+
+## 🧍‍♂️ PhiloAgents Open-Source Course
 
 If you enjoyed the workshop check out the open-source [**PhiloAgents Course**](https://github.com/neural-maze/philoagents-course), which the workshop it's inspired from.
 
@@ -264,11 +280,34 @@ The course is a collaboration between [Decoding ML](https://decodingml.substack.
 
 ![PhiloAgents Course](./static/game_socrates_example.png)
 
-**Other useful resources:**
-- [Opik Documentation](https://www.comet.com/docs/opik/)
+## 📙 Other Useful Resources
+
+- [Opik Documentation](https://www.comet.com/docs/opik/?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course)
 - [🚀 LangGraph Quickstart](https://langchain-ai.github.io/langgraph/tutorials/introduction/)
 - [Qdrant Installation](https://qdrant.tech/documentation/guides/installation/)
 - [Qdrant Quickstart](https://qdrant.tech/documentation/quickstart/)
 - [Qdrant LangChain](https://python.langchain.com/docs/integrations/vectorstores/qdrant/)
 
+----
 
+<table style="border-collapse: collapse; border: none;">
+  <tr style="border: none;">
+    <td width="20%" style="border: none;">
+      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
+        <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
+      </a>
+    </td>
+    <td width="80%" style="border: none;">
+      <div>
+        <h2>📬 Stay Updated</h2>
+        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on designing, coding, and deploying production-grade AI systems with software engineering and MLOps best practices to help you ship AI applications. Every week, straight to your inbox.</p>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://decodingml.substack.com/">
+    <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe%20Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
+  </a>
+</p>

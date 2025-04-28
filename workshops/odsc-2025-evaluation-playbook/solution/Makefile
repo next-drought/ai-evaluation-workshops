@@ -32,13 +32,13 @@ create-long-term-memory: # Initialize the long-term memory for the agent
 	uv run python -m tools.create_long_term_memory
 
 call-agent: # Query the philosophical agent with a specific question
-	TOKENIZERS_PARALLELISM=true uv run python -m tools.call_agent --philosopher-id $(PHILOSOPHER_ID) --query $(QUERY)
+	TOKENIZERS_PARALLELISM=true uv run python -m tools.call_agent --philosopher-id "$(PHILOSOPHER_ID)" --query "$(QUERY)"
 
 upload-evaluation-dataset: # Upload a dataset for agent evaluation
 	uv run python -m tools.upload_evaluation_dataset --dataset-name $(EVALUATION_DATASET_NAME)
 
 evaluate-agent: # Run evaluation tests on the agent using the specified dataset
-	uv run python -m tools.evaluate_agent --dataset-name $(EVALUATION_DATASET_NAME) --workers 2 --nb-samples 2
+	uv run python -m tools.evaluate_agent --dataset-name $(EVALUATION_DATASET_NAME) --workers 1 --nb-samples 6
 
 # --- QA ---
 

@@ -78,6 +78,6 @@ class LongTermMemoryCreator:
         for _, docs in extraction_generator:
             chunked_docs = self.splitter.split_documents(docs)
 
-            chunked_docs = deduplicate_documents(chunked_docs, threshold=0.7)
+            chunked_docs = deduplicate_documents(chunked_docs, threshold=0.5)
 
             self.vector_store.add_documents(chunked_docs)

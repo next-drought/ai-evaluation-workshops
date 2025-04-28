@@ -81,6 +81,7 @@ class QdrantClientWrapper:
         This is useful for resetting the vector store state.
         """
 
+        logger.info(f"Clearing Qdrant collection {settings.QDRANT_COLLECTION_NAME}...")
         self.client.delete_collection(collection_name=settings.QDRANT_COLLECTION_NAME)
         self.create_collection()
         logger.info(f"Qdrant collection {settings.QDRANT_COLLECTION_NAME} cleared.")

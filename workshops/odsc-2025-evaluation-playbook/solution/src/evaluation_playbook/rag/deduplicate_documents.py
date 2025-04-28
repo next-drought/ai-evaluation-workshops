@@ -5,8 +5,6 @@ from datasketch import MinHash, MinHashLSH
 from langchain_core.documents import Document
 from loguru import logger
 
-from evaluation_playbook.config import settings
-
 
 def deduplicate_documents(
     documents: List[Document], threshold: float = 0.7
@@ -48,7 +46,7 @@ def deduplicate_documents(
 def find_duplicates(
     documents: List[Document],
     threshold: float = 0.7,
-    num_perm: int = int(settings.RAG_CHUNK_SIZE * 0.5),
+    num_perm: int = 64,
 ) -> List[Tuple[int, int, float]]:
     """Find duplicate documents using MinHash algorithm.
 
