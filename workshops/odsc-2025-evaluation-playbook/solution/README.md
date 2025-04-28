@@ -310,8 +310,4 @@ The course is a collaboration between [Decoding ML](https://decodingml.substack.
   <a href="https://decodingml.substack.com/">
     <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe%20Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
   </a>
-<<<<<<< HEAD
 </p>
-=======
-</p>
->>>>>>> e369c0d0bdc33bd42b6b1e7bd76898ff6dd76b8f
