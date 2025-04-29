@@ -37,6 +37,7 @@ class Settings(BaseSettings):
     )
 
     # --- RAG Configuration ---
+    # TODO: (Module 2) Configure RAG
     RAG_TEXT_EMBEDDING_MODEL_ID: str = "text-embedding-3-small"
     RAG_TEXT_EMBEDDING_MODEL_DIM: int = 1536
     RAG_CHUNK_SIZE: int = 128

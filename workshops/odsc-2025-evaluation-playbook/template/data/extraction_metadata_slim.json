@@ -1,0 +1,20 @@
+[
+    {
+        "id": "plato",
+        "urls": [
+            "https://plato.stanford.edu/entries/plato/"
+        ]
+    },
+    {
+        "id": "aristotle",
+        "urls": [
+            "https://plato.stanford.edu/entries/aristotle/"
+        ]
+    },
+    {
+        "id": "turing",
+        "urls": [
+            "https://plato.stanford.edu/entries/turing/"
+        ]
+    }
+]

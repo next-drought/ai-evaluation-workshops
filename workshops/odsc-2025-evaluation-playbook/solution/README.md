@@ -70,10 +70,10 @@ Also, the course requires access to these cloud services. The authentication to 
 
 ## 1. Clone the Repository
 
-Start by cloning the repository and navigating to the `philoagents-api` project directory:
+Start by cloning the repository and navigating to the `workshops/odsc-2025-evaluation-playbook/solution` project directory:
 ```
 git clone https://github.com/decodingml/workshops.git
-cd workshops/odsc-2025-evaluation-playbook/template
+cd workshops/odsc-2025-evaluation-playbook/solution
 ```
 
 Next, we have to prepare your Python environment and its dependencies.
@@ -107,7 +107,7 @@ This command will:
 
 ## 4. Environment Configuration
 
-Before running any command, inside the `philoagents-api` directory, you have to set up your environment:
+Before running any command, inside the `odsc-2025-evaluation-playbook/solution` directory, you have to set up your environment:
 1. Create your environment file:
    ```bash
    cp .env.example .env
@@ -119,7 +119,7 @@ Before running any command, inside the `philoagents-api` directory, you have to 
 The project follows a clean architecture structure commonly used in production Python projects:
 
 ```bash
-philoagents-api/
+odsc-2025-evaluation-playbook/solution/
     ├── data/                       # Data files
     ├── src/evaluation_playbook/    # Python package
     ├── tools/                      # Entrypoint scripts that use the Python package
@@ -179,9 +179,9 @@ To showcase our ideas related to evaluation and observability, we will use a sim
 
 The project provides several make commands to interact with the philosophical agent and run evaluations:
 
-## 1. Initialize Long-Term Memory
+## 1. Initialize Long-Term Memory (Prepare Data)
 
-Before using the agent, you need to initialize its long-term memory:
+Before using the agent, you need to initialize its long-term memory, which will populate the Qdrant vector database with relevant context:
 
 ```bash
 make create-long-term-memory
@@ -189,7 +189,25 @@ make create-long-term-memory
 
 To check that everything worked fine, the easiest way is to check [Qdrant's Dashboard](localhost:6333/dashboard).
 
-## 2. Visualize the Embeddings in Qdrant
+## 2. Query the Agent & Monitor the Prompt Traces (Module 1)
+
+You can interact with the philosophical agent using the `call-agent` command. By default, it uses Plato as the philosopher and asks about his life:
+
+```bash
+make call-agent PHILOSOPHER_ID="plato" QUERY="When and where were you born? Also tell me more about your life, work and beliefs."
+```
+
+You can customize the philosopher and query using variables:
+
+```bash
+make call-agent PHILOSOPHER_ID="turing" QUERY="What is your view on ethics when it comes to build intelligent machines? Also, tell me more about the Turing Test."
+```
+
+#### Prompt Monitoring
+
+Visualize the **prompt traces** in [Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+
+## 3. Visualize the Embeddings in Qdrant (Module 2)
 
 Now let's visualize the embeddings of the chunks ingested in the long term memory, more exactly in Qdrant.
 
@@ -209,25 +227,7 @@ To add a filter on a specific philosopher (entity) you can run the following que
 }
 ```
 
-## 3. Query the Agent
-
-You can interact with the philosophical agent using the `call-agent` command. By default, it uses Plato as the philosopher and asks about his life:
-
-```bash
-make call-agent PHILOSOPHER_ID="plato" QUERY="When and where were you born? Also tell me more about your life, work and beliefs."
-```
-
-You can customize the philosopher and query using variables:
-
-```bash
-make call-agent PHILOSOPHER_ID="turing" QUERY="What is your view on ethics when it comes to build intelligent machines? Also, tell me more about the Turing Test."
-```
-
-Visualize the **prompt traces** in [Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
-
-Visualize the **versioned prompts** in [Opik's dashboard -> Prompt library](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
-
-## 3. Run Evaluations
+## 4. Run Evaluations (Module 2 & 3)
 
 To evaluate the agent's performance, first upload an evaluation dataset:
 
@@ -245,9 +245,27 @@ make evaluate-agent
 
 Visualize the **evaluation results (experiments)** in [Opik's dashboard -> Experiments](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course)
 
+#### Prompt Versioning
+
+Visualize the **versioned prompts** in [Opik's dashboard -> Prompt library](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+
 📖 [Read more](https://www.comet.com/docs/opik/evaluation/metrics/overview?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course) on the evaluation metrics, such as how to interpret the numbers and how they are computed.
 
-## 4. Help
+## 5. User Feedback (Module 4)
+
+As we don't have a UI, to show case the core idea, we collect user feedback directly from Opik. Thus, go to [Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course),
+pick a prompt trace, go to feedback scores, and label the prompt traces as correct or not correct and optionally pick a quality score between 0 and 1.
+
+As we don't have a UI to showcase the core idea, we collect user feedback directly from Opik. Thus, go to 
+[Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course). Then go to feedback scores, label the prompt traces as correct or incorrect, and optionally pick a quality score between 0 and 1.
+
+![Feedback Scores](./static/feedback_scores.png)
+
+> [!WARNING] 
+> Note that these have to be configured separately per user workspace.
+
+
+## 6. Help
 
 For help on all the supported commands, run:
 
