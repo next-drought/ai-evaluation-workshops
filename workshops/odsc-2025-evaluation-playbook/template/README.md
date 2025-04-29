@@ -203,7 +203,7 @@ You can customize the philosopher and query using variables:
 make call-agent PHILOSOPHER_ID="turing" QUERY="What is your view on ethics when it comes to build intelligent machines? Also, tell me more about the Turing Test."
 ```
 
-> ![NOTE]
+> [!NOTE]
 > Module 1
 > Add a prompt monitoring layer Use a prompt management tool, such as Opik by Comet, to track and visualize the traces of your LLM workflows or agents.
 
