@@ -204,7 +204,7 @@ make call-agent PHILOSOPHER_ID="turing" QUERY="What is your view on ethics when 
 ```
 
 > [!NOTE]
-> Module 1
+> **Module 1**
 > Add a prompt monitoring layer Use a prompt management tool, such as Opik by Comet, to track and visualize the traces of your LLM workflows or agents.
 
 #### Prompt Monitoring
@@ -232,7 +232,7 @@ To add a filter on a specific philosopher (entity) you can run the following que
 ```
 
 > [!NOTE]
-> Module 2
+> **Module 2**
 > Evaluate the retrieval step used for RAG Use visualization techniques to iteratively understand the quality of your embeddings that will be used for semantic search during RAG. Use LLMs as judges to compute retrieval recall and precision metrics.
 
 ## 4. Run Evaluations (Module 2 & 3)
@@ -260,7 +260,7 @@ Visualize the **versioned prompts** in [Opik's dashboard -> Prompt library](http
 📖 [Read more](https://www.comet.com/docs/opik/evaluation/metrics/overview?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course) on the evaluation metrics, such as how to interpret the numbers and how they are computed.
 
 > [!NOTE]
-> Module 3
+> **Module 3**
 > Application-level metrics Compute application-level metrics using LLM-as-judges to detect hallucinations, moderation issues, and compute performance scores. Also, we will learn how to log these metrics into an experiment tracker (Opik) to compare multiple iterations of the application.
 > To make things even more interesting, we will also version the prompts that power the agentic RAG system and track them during our experiments.
 
@@ -278,7 +278,7 @@ As we don't have a UI to showcase the core idea, we collect user feedback direct
 > Note that these have to be configured separately per user workspace.
 
 > [!NOTE]
-> Module 4
+> **Module 4**
 > Implement a user feedback mechanism that can later be used to improve your evaluation datasets or fine-tune jobs such as preference alignment.
 
 
