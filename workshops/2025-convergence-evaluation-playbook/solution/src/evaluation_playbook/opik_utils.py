@@ -81,9 +81,8 @@ def create_dataset(name: str, description: str, items: list[dict]) -> opik.Datas
     Returns:
         opik.Dataset: The newly created and populated dataset.
     """
-    client = opik.Opik()
 
-    client.delete_dataset(name=name)
+    client = opik.Opik()
 
     dataset = client.create_dataset(name=name, description=description)
     dataset.insert(items)

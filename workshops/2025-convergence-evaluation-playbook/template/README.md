@@ -68,10 +68,10 @@ Also, the course requires access to these cloud services. The authentication to 
 
 ## 1. Clone the Repository
 
-Start by cloning the repository and navigating to the `workshops/convergence-2025-evaluation-playbook/template` project directory:
+Start by cloning the repository and navigating to the `workshops/2025-convergence-evaluation-playbook/template` project directory:
 ```
 git clone https://github.com/decodingml/workshops.git
-cd workshops/convergence-2025-evaluation-playbook/template
+cd workshops/2025-convergence-evaluation-playbook/template
 ```
 
 Next, we have to prepare your Python environment and its dependencies.
@@ -105,7 +105,7 @@ This command will:
 
 ## 4. Environment Configuration
 
-Before running any command, inside the `convergence-2025-evaluation-playbook/template` directory, you have to set up your environment:
+Before running any command, inside the `2025-convergence-evaluation-playbook/template` directory, you have to set up your environment:
 1. Create your environment file:
    ```bash
    cp .env.example .env
@@ -117,7 +117,7 @@ Before running any command, inside the `convergence-2025-evaluation-playbook/tem
 The project follows a clean architecture structure commonly used in production Python projects:
 
 ```bash
-convergence-2025-evaluation-playbook/template
+2025-convergence-evaluation-playbook/template
     ├── data/                       # Data files
     ├── src/evaluation_playbook/    # Python package
     ├── tools/                      # Entrypoint scripts that use the Python package
@@ -135,12 +135,12 @@ We use Docker to set up the local infrastructure, more exactly a Qdrant vector d
 > [!WARNING]
 > Before running the command below, ensure you do not have any processes running on ports `6333` (Qdrant).
 
-From the root `convergence-2025-evaluation-playbook/template` directory (or `solution`), to start the Docker infrastructure, run:
+From the root `2025-convergence-evaluation-playbook/template` directory (or `solution`), to start the Docker infrastructure, run:
 ```bash
 make local-infrastructure-up
 ```
 
-From the root `convergence-2025-evaluation-playbook/template` directory (or `solution`), to stop the Docker infrastructure, run:
+From the root `2025-convergence-evaluation-playbook/template` directory (or `solution`), to stop the Docker infrastructure, run:
 ```bash
 make local-infrastructure-down
 ```

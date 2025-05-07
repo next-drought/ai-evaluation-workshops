@@ -38,7 +38,7 @@ upload-evaluation-dataset: # Upload a dataset for agent evaluation
 	uv run python -m tools.upload_evaluation_dataset --dataset-name $(EVALUATION_DATASET_NAME)
 
 evaluate-agent: # Run evaluation tests on the agent using the specified dataset
-	uv run python -m tools.evaluate_agent --dataset-name $(EVALUATION_DATASET_NAME) --workers 1 --nb-samples 6
+	uv run python -m tools.evaluate_agent --dataset-name $(EVALUATION_DATASET_NAME) --workers 1 --nb-samples 2
 
 # --- QA ---
 

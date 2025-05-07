@@ -83,8 +83,6 @@ def create_dataset(name: str, description: str, items: list[dict]) -> opik.Datas
     """
     client = opik.Opik()
 
-    client.delete_dataset(name=name)
-
     dataset = client.create_dataset(name=name, description=description)
     dataset.insert(items)
 
