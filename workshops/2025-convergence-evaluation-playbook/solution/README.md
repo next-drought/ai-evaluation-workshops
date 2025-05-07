@@ -1,11 +1,11 @@
 <div align="center">
   <h1>LLM & RAG Evaluation Playbook</h1>
   <h3>A comprehensive guide for evaluating LLMs, RAG and agentic systems in production applications</h3>
-  <p class="tagline"> <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">ODSC 2025 Webinar by Paul Iusztin</a> - Click to learn more about the webinar and speaker</p>
+   <p class="tagline"> <a href="https://www.comet.com/site/events/convergence/">Convergence 2025</a> Webinar by Paul Iusztin</p>
 </div>
 
 <div align="center">
-    <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">
+    <a href="https://www.comet.com/site/events/convergence/">
         <img src="../workshop_card.png" width="500" alt="Workshop Card" />
     </a>
 </div>
@@ -20,9 +20,7 @@ This guide will help you set up and run the webinar, where we will explore the f
 - Version the prompts
 
 <div align="center">
-    <a href="https://odsc.com/speakers/llm-rag-evaluation-playbook-for-production-apps/">
-        <img src="../where_can_we_evaluate_a _RAG_agent.png" width="700" alt="Workshop Card" />
-    </a>
+      <img src="../where_can_we_evaluate_a _RAG_agent.png" width="700" alt="Workshop Card" />
 </div>
 
 # 📑 Table of Contents
@@ -70,10 +68,10 @@ Also, the course requires access to these cloud services. The authentication to 
 
 ## 1. Clone the Repository
 
-Start by cloning the repository and navigating to the `workshops/odsc-2025-evaluation-playbook/solution` project directory:
+Start by cloning the repository and navigating to the `workshops/2025-convergence-evaluation-playbook/solution` project directory:
 ```
 git clone https://github.com/decodingml/workshops.git
-cd workshops/odsc-2025-evaluation-playbook/solution
+cd workshops/2025-convergence-evaluation-playbook/solution
 ```
 
 Next, we have to prepare your Python environment and its dependencies.
@@ -107,7 +105,7 @@ This command will:
 
 ## 4. Environment Configuration
 
-Before running any command, inside the `odsc-2025-evaluation-playbook/solution` directory, you have to set up your environment:
+Before running any command, inside the `2025-convergence-evaluation-playbook/solution` directory, you have to set up your environment:
 1. Create your environment file:
    ```bash
    cp .env.example .env
@@ -119,7 +117,7 @@ Before running any command, inside the `odsc-2025-evaluation-playbook/solution` 
 The project follows a clean architecture structure commonly used in production Python projects:
 
 ```bash
-odsc-2025-evaluation-playbook/solution/
+2025-convergence-evaluation-playbook/solution/
     ├── data/                       # Data files
     ├── src/evaluation_playbook/    # Python package
     ├── tools/                      # Entrypoint scripts that use the Python package
@@ -137,12 +135,12 @@ We use Docker to set up the local infrastructure, more exactly a Qdrant vector d
 > [!WARNING]
 > Before running the command below, ensure you do not have any processes running on ports `6333` (Qdrant).
 
-From the root `odsc-2025-evaluation-playbook/solution` directory (or `template`), to start the Docker infrastructure, run:
+From the root `2025-convergence-evaluation-playbook/template` directory (or `solution`), to start the Docker infrastructure, run:
 ```bash
 make local-infrastructure-up
 ```
 
-From the root `odsc-2025-evaluation-playbook/solution` directory (or `template`), to stop the Docker infrastructure, run:
+From the root `2025-convergence-evaluation-playbook/template` directory (or `solution`), to stop the Docker infrastructure, run:
 ```bash
 make local-infrastructure-down
 ```
@@ -205,7 +203,7 @@ make call-agent PHILOSOPHER_ID="turing" QUERY="What is your view on ethics when 
 
 #### Prompt Monitoring
 
-Visualize the **prompt traces** in [Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+Visualize the **prompt traces** in [Opik's dashboard -> Projects -> convergence-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
 
 ## 3. Visualize the Embeddings in Qdrant (Module 2)
 
@@ -235,7 +233,7 @@ To evaluate the agent's performance, first upload an evaluation dataset:
 make upload-evaluation-dataset
 ```
 
-Visualize the **evaluation dataset** in [Opik's dashboard -> Datasets -> odsc-2025-evaluation-playbook-slim-dataset](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
+Visualize the **evaluation dataset** in [Opik's dashboard -> Datasets -> convergence-2025-evaluation-playbook-slim-dataset](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course).
 
 Then run the evaluation:
 
@@ -253,11 +251,11 @@ Visualize the **versioned prompts** in [Opik's dashboard -> Prompt library](http
 
 ## 5. User Feedback (Module 4)
 
-As we don't have a UI, to show case the core idea, we collect user feedback directly from Opik. Thus, go to [Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course),
+As we don't have a UI, to show case the core idea, we collect user feedback directly from Opik. Thus, go to [Opik's dashboard -> Projects -> convergence-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course),
 pick a prompt trace, go to feedback scores, and label the prompt traces as correct or not correct and optionally pick a quality score between 0 and 1.
 
 As we don't have a UI to showcase the core idea, we collect user feedback directly from Opik. Thus, go to 
-[Opik's dashboard -> Projects -> odsc-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course). Then go to feedback scores, label the prompt traces as correct or incorrect, and optionally pick a quality score between 0 and 1.
+[Opik's dashboard -> Projects -> convergence-2025-evaluation-playbook-webinar](https://www.comet.com/opik?utm_source=philoagents_course&utm_campaign=opik&utm_medium=course). Then go to feedback scores, label the prompt traces as correct or incorrect, and optionally pick a quality score between 0 and 1.
 
 ![Feedback Scores](./static/feedback_scores.png)
 
