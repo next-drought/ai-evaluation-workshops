@@ -1,12 +1,12 @@
 <div align="center">
   <h1>LLM & RAG Evaluation Playbook</h1>
   <h3>A comprehensive guide for evaluating LLMs, RAG and agentic systems in production applications</h3>
-   <p class="tagline"> <a href="https://www.comet.com/site/events/convergence/">Convergence 2025</a> Webinar by Paul Iusztin</p>
+  <p class="tagline"> <a href="https://www.comet.com/site/events/convergence/">Convergence 2025</a> Webinar by Paul Iusztin</p>
 </div>
 
 <div align="center">
     <a href="https://www.comet.com/site/events/convergence/">
-        <img src="../workshop_card.png" width="500" alt="Workshop Card" />
+        <img src="./workshop_card.png" width="500" alt="Workshop Card" />
     </a>
 </div>
 
@@ -20,7 +20,7 @@ This guide will help you set up and run the webinar, where we will explore the f
 - Version the prompts
 
 <div align="center">
-      <img src="../where_can_we_evaluate_a _RAG_agent.png" width="700" alt="Workshop Card" />
+    <img src="./where_can_we_evaluate_a _RAG_agent.png" width="700" alt="Workshop Card" />
 </div>
 
 # Choose Between the Solution or Template directory
