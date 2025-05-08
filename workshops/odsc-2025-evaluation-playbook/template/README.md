@@ -73,7 +73,7 @@ Also, the course requires access to these cloud services. The authentication to 
 Start by cloning the repository and navigating to the `workshops/odsc-2025-evaluation-playbook/template` project directory:
 ```
 git clone https://github.com/decodingml/workshops.git
-cd workshops/odsc-2025-evaluation-playbook/template
+cd workshops/workshops/odsc-2025-evaluation-playbook/template
 ```
 
 Next, we have to prepare your Python environment and its dependencies.

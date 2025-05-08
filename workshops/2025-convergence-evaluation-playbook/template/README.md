@@ -71,7 +71,7 @@ Also, the course requires access to these cloud services. The authentication to 
 Start by cloning the repository and navigating to the `workshops/2025-convergence-evaluation-playbook/template` project directory:
 ```
 git clone https://github.com/decodingml/workshops.git
-cd workshops/2025-convergence-evaluation-playbook/template
+cd workshops/workshops/2025-convergence-evaluation-playbook/template
 ```
 
 Next, we have to prepare your Python environment and its dependencies.
